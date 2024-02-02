@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.json());
 
 // Routes
@@ -49,11 +48,4 @@ app.put('/tasks/:id', (req, res) => {
     const updatedTask = req.body;
     tasks[taskIndex] = { ...tasks[taskIndex], ...updatedTask };
     res.send('Task updated successfully');
-});
-
-// Delete a task
-app.delete('/tasks/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    tasks = tasks.filter(task => task.id !== id);
-    res.send('Task deleted successfully');
 });
